@@ -1,0 +1,11 @@
+<!--pages/add/add.wxml-->
+<form bindsubmit="btnsub">
+  <input mame="project_neme" placeholder="请输入项目名称"></input>
+  <input name="project_leader" placeholder="请输入项目负责人"></input>
+  <input name="project_teather" placeholder="请输入项目第一指导老师"></input>
+  <input name="project_college" placeholder="请输入项目所属学院"></input>
+  <textarea name="project_introduction" placeholder="请输入项目简介"></textarea>
+  <textarea name="project_need" placeholder="请输入项目需求"></textarea>
+  <button type="primary" form-type="submit">提交</button>
+  <button form-type="reset">重置</button>
+</form>

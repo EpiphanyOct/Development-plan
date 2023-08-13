@@ -1,0 +1,13 @@
+/* pages/user/user.wxss */
+.head{
+  margin-left: 20px;
+  width:300rpx;
+  height: 300rpx;
+}
+.text-container {
+  margin-left: 10px;
+}
+
+.text {
+  margin-bottom: 5px;
+}

@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/log_in/log_in",
+    "pages/home/home",
+    "pages/add/add",
+    "pages/user/user",
+    "pages/index/index",
+    "pages/logs/logs"
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#7fb80e",
+    "navigationBarTitleText": "广西科技大学创业创新平台",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text":"首页",
+      "iconPath": "pages/images/tabs/homeblue.png",
+      "selectedIconPath": "pages/images/tabs/homegreen.png"
+    },{
+      "pagePath": "pages/add/add",
+      "text":"发布消息",
+      "iconPath": "pages/images/tabs/addblue.png",
+      "selectedIconPath": "pages/images/tabs/addgreen.png"
+    },{
+      "pagePath": "pages/user/user",
+      "text":"个人中心",
+      "iconPath": "pages/images/tabs/userblue.png",
+      "selectedIconPath": "pages/images/tabs/usergreen.png"
+    }]
+  },
+  "permission": {
+    "scope.userProfile": {
+      "desc": "你自定义的授权说明"
+    }
+  },
+  
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+
+  
+}

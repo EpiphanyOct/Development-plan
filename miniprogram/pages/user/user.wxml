@@ -1,0 +1,11 @@
+<!--pages/user/user.wxml-->
+
+<view class="container">
+  <image class = "head" src="{{picUrl}}"></image>
+  <view class="text-container">
+    <text class="text">姓名</text>
+    <text class="text">年级</text>
+    <text class="text">学院</text>
+  </view>
+  <button type="primary" bindtap="clickBtn">上传头像</button>
+</view>
