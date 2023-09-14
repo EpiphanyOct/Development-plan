@@ -1,7 +1,7 @@
 {
-  "name": "quickstartFunctions",
+  "name": "demoGetlist",
   "version": "1.0.0",
-  "description": "gaolelianggexiaoshi",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@cloudbase/node-sdk": "*",
-    "wx-server-sdk": "*"
+    "wx-server-sdk": "^2.7.2"
   }
 }

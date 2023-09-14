@@ -2,10 +2,17 @@
 
 App({
 
-
+  globalData: {
+    occupation:"",
+    userInfo: null,
+    openid:null,
+    head:null,
+    name:null
+  },
 
 
   onLaunch: function () {
+    const that = this
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力');
     } else {
@@ -23,12 +30,13 @@ App({
 
     }
     //获取用户openid
-    var that = this;
+    console.log("222")
     wx.cloud.callFunction({
       name:'quickstartFunctions',
       success(res){
-        //console.log(res)
-        that.globalData.openid = res.result.userInfo.openId
+        console.log("111")
+        console.log(res.result)
+        that.globalData.openid = res.result.openid
         //console.log(that.globalData.openid)
         //查找数据库用户表里面是否有这个用户记录
         wx.cloud.database().collection("login_users").where({
@@ -38,8 +46,13 @@ App({
             console.log(result)
             that.globalData.userInfo = result.data[0]._openid
             that.globalData.head = result.data[0].avatarUrl
+            that.globalData.name = result.data[0].nickName
           }
         })
+        wx.redirectTo({
+          //url:"pages/try/try"
+          url: '/pages/log_in/log_in'
+      })
       }
     })
 
@@ -47,9 +60,5 @@ App({
 
     
   },
-  globalData: {
-    userInfo: null,
-    openid:null,
-    head:null
-  },
+
 });

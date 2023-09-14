@@ -1,12 +1,19 @@
 {
   "pages":[
+ 
+    "pages/londing/londing",
     "pages/log_in/log_in",
+    "pages/occupation/occupation",
     "pages/home/home",
     "pages/add/add",
     "pages/user/user",
+    "pages/user_in/user_in",
     "pages/index/index",
-    "pages/logs/logs"
-
+    "pages/logs/logs",
+    "pages/project_list/project_list",
+    "pages/project_modification/project_modification",
+    "pages/project_list_in/project_list_in",
+    "pages/try/try"
   ],
   "window":{
     "backgroundTextStyle":"light",

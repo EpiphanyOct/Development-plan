@@ -1,7 +1,7 @@
 const cloud = require('wx-server-sdk');
 
 cloud.init({
-  env: cloud.DYNAMIC_CURRENT_ENV
+  env: 'shool-1gus62rlb2e36ed3'
 });
 
 // 获取openId云函数入口函数

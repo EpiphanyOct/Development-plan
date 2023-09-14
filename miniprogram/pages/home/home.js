@@ -13,26 +13,41 @@ Page({
     duration: 500, // 图片切换的动画时长
     imageUrl: [],
     projectlist: [],
-
+    dataList:[],
     
     isloding:false
   },
+
+
+
+
+  list(num=5,page=0){
+    console.log(page)
+    wx.cloud.callFunction({
+      name:"domegetlist",
+      data:{
+        num:num,
+        page:page
+      }
+    }).then(res=>{
+      var olData=this.data.dataList
+      var newData=olData.concat(res.result.data);
+      console.log(newData)
+      this.setData({
+        dataList:newData
+      })
+    })
+    
+
+
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-    //-------------------------------显示登录成功
-    wx.showToast({
-      title: '登录成功',
-    })
+    this.list()
     //-------------------------------轮播图的获取
     wx.stopPullDownRefresh();
     var that = this; //------------------------------- 声明一个变量保存当前页面的上下文
@@ -49,7 +64,8 @@ Page({
         for (var i = 0; i < fileIDs.length; i++) {
           wx.cloud.downloadFile({
             fileID: fileIDs[i],
-
+//202200408048
+//242710
     
             success: function(res) {
               //console.log(res)
@@ -74,13 +90,24 @@ Page({
       }
     });
   //--------------------------------------项目信息显示
+  },
 
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+    //-------------------------------显示登录成功
+    wx.showToast({
+      title: '登录成功',
+    })
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
+ 
 
   },
 
@@ -143,15 +170,6 @@ Page({
       }
     });
 
-
-    db.collection("domelist").get({
-      success: function(res) {
-        console.log(res)
-        that.setData({
-          projectlist: res.data
-        }); 
-        }
-      });
   },
   
 
@@ -160,6 +178,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
+    var page=this.data.dataList.length
+    this.list(5,page)
     console.log('触发了上拉触底事件')
   },
 

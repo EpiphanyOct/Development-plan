@@ -1,25 +1,30 @@
+<!--pages/project_list_in/project_list_in.wxml-->
 <!--pages/user/user.wxml-->
 <!--上部个人信息-->
 <view class="containter">
   <view class="top">
     <image src="{{picUrl}}"></image>
-    <button class="button1" size="mini" style="width:25vw" type="primary" bindtap="clickBtn">上传头像</button>
   </view>
   <view class="texts">
     <view class="text">姓名：{{name}}{{ress.data[0].name}}</view>
     <view class="text">性别：{{ress.data[0].gender}}</view>
     <view class="text">年级：{{ress.data[0].grade}}</view>
     <view class="text">学院：{{ress.data[0].college}}</view>
-    <button class="button2" size="mini" style="width:25vw" type="primary" bindtap="message">修改信息</button>
   </view>
+</view>
+
+<view wx:if="{{fule.project_leader == openid || fule.project_teather == openid}}" class="reason0">
+  <view>QQ: {{ress.data[0].QQ}}</view>
+  <view>微信：{{ress.data[0].wechat}}</view>
+  <view>电话： {{ress.data[0].phone}}</view>
 </view>
 <view class="reason">个人简介：</view>
 <view class="intro">{{ress.data[0].intro}}</view>
 <!--负责项目分割线-->
 <text class="reason1">负责的项目</text>
-<navigator open-type="navigateTo" url="/pages/project_list/project_list?project_neme={{item.project_neme}}&project_id={{item._id}}"
+<navigator open-type="navigateTo" url="/pages/project_list/project_list?project_neme={{datalist[0].project_neme}}&project_id={{datalist[0]._id}}"
 class="row" wx:for="{{datalist}}" wx:key="index">
-  <view class="title">项目名称：{{item.project_neme}}</view>
+  <view class="title">项目名称：{{datalist[0].project_neme}}</view>
 </navigator>
 
 
@@ -28,6 +33,7 @@ class="row" wx:for="{{datalist}}" wx:key="index">
 
 <!--参与项目分割线-->
 <text class="reason2">参与的项目</text>
+
 
 
 

@@ -1,15 +1,22 @@
 // pages/add/add.js
 const db=wx.cloud.database();
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    college:['马克思主义学院','机械与汽车工程学院','生物与化学工程学院','土木建筑工程学院','自动化学院','电子工程学院','经济与管理学院','医学部','理学院','人文艺术与设计学院','外国语学院','体育学院','启迪数字学院','计算机科学与技术学院','国际教育学院','继续教育学院','创新创业学院'],
+    index3:0,
   },
 
-
+  bindPickercollege: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index3: e.detail.value
+    })
+  },
 
   //提交表单添加进数据库
   btnsub(res){
@@ -20,19 +27,65 @@ Page({
     // var project_introduction=detail.value.project_introduction;
     // var project_need=detail.value.project_need;
 
-    var {project_leader, project_teather, project_college, project_introduction, project_need}=res.detail.value;
+    var {project_neme,project_introduction, project_need}=res.detail.value;
     //console.log(project_leader, project_teather, project_college, project_introduction, project_need)
-    db.collection("domelist").add({
-      data:{
-        project_leader:project_leader,
-        project_teather:project_teather,
-        project_college:project_college,
-        project_introduction:project_introduction,
-        project_need:project_need
+    var name;
+    console.log(res.detail)
+    wx.cloud.database().collection("people").where({
+      _openid:app.globalData.openid
+    }).get().then(ress=>{
+      if(ress.data.length==0){
+        name=app.globalData.name
+        console.log("找到了")
+      }else{
+        console.log(ress.data[0].name)
+        name=ress.data[0].name
+        console.log(name)
       }
-    }).then(res=>{
-      console.log(res)
-    }) 
+      console.log(name)
+      if (app.globalData.occupation=='student'){
+        db.collection("domelist").add({
+          data:{
+            project_neme:project_neme,
+            project_leader:[
+              app.globalData.openid,name
+            ],
+            project_teather:[],
+            project_teathers:[],
+            project_college:this.data.college[this.data.index3],
+            project_introduction:project_introduction,
+            project_need:project_need,
+            project_want:[],
+            project_member:[]
+          }
+        }).then(res=>{
+          console.log(res)
+        }) 
+        }else if (app.globalData.occupation=='teather'){
+          db.collection("domelist").add({
+            data:{
+              project_neme:project_neme,
+              project_leader:[
+              ],
+              project_teather:[app.globalData.openid,name],
+              project_teathers:[],
+              project_college:this.data.college[this.data.index3],
+              project_introduction:project_introduction,
+              project_need:project_need,
+              project_want:[['want']],
+              project_member:[]
+            }
+          }).then(res=>{
+            console.log(res)
+          }) 
+        }
+
+      wx.showToast({
+        title: '提交成功',})
+        wx.reLaunch({
+          url: '/pages/user/user'
+      })
+    })
   },
 
   /**

@@ -1,39 +1,35 @@
-// pages/log_in/log_in.js
-const app =getApp()
+// pages/occupation/occupation.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    oh_yeah:''
-  },
 
-  login(){
-    console.log(app.globalData)
-    wx.cloud.database().collection("login_users").where({
+  },
+ open:function(event){
+   console.log(event.currentTarget.dataset.index)
+  wx.cloud.database().collection("login_users").add({
+    data:{
+      occupation:event.currentTarget.dataset.index,
       _openid:app.globalData.openid
-    }).get().then(res=>{
-      console.log(res.data[0])
-      if(res.data[0]==undefined){
-        console.log("没找到")
-        wx.reLaunch({
-          url: '/pages/occupation/occupation'
-        })
-      }else{
-        app.globalData.occupation=res.data[0].occupation
-        console.log("找到了")
-        wx.reLaunch({
-          url: '/pages/home/home'
+    },
+    success(res){
+      app.globalData.occupation=event.currentTarget.dataset.index
+      wx.showToast({
+        title: '登录成功',
       })
+      wx.reLaunch({
+        url: '/pages/user/user'
+    })
     }
   })
-  },
-
+ },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onLoad:function(options) {
 
   },
 

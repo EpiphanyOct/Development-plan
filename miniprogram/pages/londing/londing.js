@@ -1,33 +1,11 @@
-// pages/log_in/log_in.js
-const app =getApp()
+// pages/londing/londing.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    oh_yeah:''
-  },
 
-  login(){
-    console.log(app.globalData)
-    wx.cloud.database().collection("login_users").where({
-      _openid:app.globalData.openid
-    }).get().then(res=>{
-      console.log(res.data[0])
-      if(res.data[0]==undefined){
-        console.log("没找到")
-        wx.reLaunch({
-          url: '/pages/occupation/occupation'
-        })
-      }else{
-        app.globalData.occupation=res.data[0].occupation
-        console.log("找到了")
-        wx.reLaunch({
-          url: '/pages/home/home'
-      })
-    }
-  })
   },
 
   /**

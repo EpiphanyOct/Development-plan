@@ -1,0 +1,22 @@
+<view class="container">
+  <scroll-view class="list">
+    <block wx:for="{{applicants}}" wx:key="index">
+      <view class="item {{activeIndex == index ? 'active' : ''}}" bindtap="showApplicantInfo" data-index="{{index}}">
+        <view class="applicant">{{item.name}}</view>
+        <view class="decision">
+          <button bindtap="approveApplication" data-index="{{index}}">同意</button>
+          <button bindtap="rejectApplication" data-index="{{index}}">不同意</button>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view class="info">
+    <view wx:if="{{selectedApplicant}}" class="applicant-info">
+      <h2>{{selectedApplicant.name}}信息</h2>
+      <text>姓名：{{selectedApplicant.name}}</text>
+      <text>年龄：{{selectedApplicant.age}}</text>
+      <text>职业：{{selectedApplicant.occupation}}</text>
+      <!-- 其他申请人信息 -->
+    </view>
+  </view>
+</view>

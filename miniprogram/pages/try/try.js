@@ -1,35 +1,32 @@
-// pages/log_in/log_in.js
-const app =getApp()
+// pages/try/try.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-    oh_yeah:''
+    applicants: [
+      { name: "申请人A", age: 25, occupation: "工程师" },
+      { name: "申请人B", age: 30, occupation: "设计师" }
+      // 其他申请人数据
+    ],
+    activeIndex: -1,
+    selectedApplicant: null
   },
-
-  login(){
-    console.log(app.globalData)
-    wx.cloud.database().collection("login_users").where({
-      _openid:app.globalData.openid
-    }).get().then(res=>{
-      console.log(res.data[0])
-      if(res.data[0]==undefined){
-        console.log("没找到")
-        wx.reLaunch({
-          url: '/pages/occupation/occupation'
-        })
-      }else{
-        app.globalData.occupation=res.data[0].occupation
-        console.log("找到了")
-        wx.reLaunch({
-          url: '/pages/home/home'
-      })
-    }
-  })
+  showApplicantInfo(e) {
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+      activeIndex: index,
+      selectedApplicant: this.data.applicants[index]
+    });
   },
-
+  
+  approveApplication(e) {
+    const index = e.currentTarget.dataset.index;
+    console.log("同意申请：" + index);
+  },
+  
+  rejectApplication(e) {
+    const index = e.currentTarget.dataset.index;
+    console.log("不同意申请：" + index);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
