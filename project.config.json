@@ -38,7 +38,8 @@
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
     "minifyWXML": true,
-    "condition": false
+    "condition": false,
+    "ignoreUploadUnusedFiles": false
   },
   "appid": "wx7c2704109b784bb2",
   "projectname": "quickstart-wx-cloud",
