@@ -102,7 +102,7 @@ Page({
 
   getDate(){
     wx.cloud.database().collection("domelist").where({
-      _openid:app.globalData.openid
+      project_leader:app.globalData.openid
     }).get().then(res=>{
     console.log(res)
     this.setData({

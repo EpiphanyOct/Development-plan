@@ -22,9 +22,9 @@
 <view class="intro">{{ress.data[0].intro}}</view>
 <!--负责项目分割线-->
 <text class="reason1">负责的项目</text>
-<navigator open-type="navigateTo" url="/pages/project_list/project_list?project_neme={{datalist[0].project_neme}}&project_id={{datalist[0]._id}}"
+<navigator open-type="navigateTo" url="/pages/project_list/project_list?project_neme={{datalist[index].project_neme}}&project_id={{datalist[index]._id}}"
 class="row" wx:for="{{datalist}}" wx:key="index">
-  <view class="title">项目名称：{{datalist[0].project_neme}}</view>
+  <view class="title">项目名称：{{datalist[index].project_neme}}</view>
 </navigator>
 
 

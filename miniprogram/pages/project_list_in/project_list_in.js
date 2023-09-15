@@ -47,7 +47,7 @@ Page({
 
   getDate(){
     wx.cloud.database().collection("domelist").where({
-      _openid:this.data.list.project_people
+      project_leader:this.data.list.project_people
     }).get().then(res=>{
     console.log(res)
     this.setData({
