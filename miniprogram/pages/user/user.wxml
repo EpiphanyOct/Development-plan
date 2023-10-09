@@ -5,10 +5,17 @@
     <image src="{{picUrl}}"></image>
     <button class="button1" size="mini" style="width:25vw" type="primary" bindtap="clickBtn">上传头像</button>
   </view>
-  <view class="texts">
+  <view class="texts" wx:if="{{occupation == 'student'}}">
     <view class="text">姓名：{{name}}{{ress.data[0].name}}</view>
     <view class="text">性别：{{ress.data[0].gender}}</view>
     <view class="text">年级：{{ress.data[0].grade}}</view>
+    <view class="text">学院：{{ress.data[0].college}}</view>
+    <button class="button2" size="mini" style="width:25vw" type="primary" bindtap="message">修改信息</button>
+  </view>
+  <view class="texts" wx:if="{{occupation == 'teather'}}">
+    <view class="text">姓名：{{name}}{{ress.data[0].name}}</view>
+    <view class="text">性别：{{ress.data[0].gender}}</view>
+    <view class="text">专业：{{ress.data[0].grade}}</view>
     <view class="text">学院：{{ress.data[0].college}}</view>
     <button class="button2" size="mini" style="width:25vw" type="primary" bindtap="message">修改信息</button>
   </view>

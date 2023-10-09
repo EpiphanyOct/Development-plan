@@ -1,5 +1,6 @@
 // pages/user/user.js
 const app = getApp()
+
 Page({
 
   /**
@@ -8,6 +9,7 @@ Page({
   data: {
     lits:[],
     list:"",
+    occupation:"",
   },
 
   clickBtn(){
@@ -60,6 +62,7 @@ Page({
   },
 
   information(){
+    console.log(app.globalData.occupation)
     console.log(app.globalData.openid)
     var lits;
     wx.cloud.database().collection("people").where({
@@ -105,7 +108,9 @@ Page({
       project_leader:app.globalData.openid
     }).get().then(res=>{
     console.log(res)
+    this.data.occupation=app.globalData.occupation
     this.setData({
+      occupation:this.data.occupation,
       datalist:res.data
     })
   })
@@ -122,7 +127,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-     
+
   },
 
   /**
@@ -131,7 +136,6 @@ Page({
   onShow() {
     this.head()
     this.information()
-    //console.log(app.globalData)
     //console.log(app.globalData.head)
 
 
