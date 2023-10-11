@@ -21,7 +21,7 @@
   <view class="container">
     <block wx:for="{{list2.project_member}}" wx:key="index">
       <view>
-        <view class="row" bindtap="showApplicantInfo" data-index="{{list2.project_member[index][0]}}">{{list2.project_member[index][1]}}</view>
+        <view class="row" bindtap="showApplicantInfo" data-index="{{list2.project_member[index][0]}}" data-occupation="student">{{list2.project_member[index][1]}}</view>
       </view>
     </block>
   </view>
@@ -38,7 +38,7 @@
   <view class="container">
     <block wx:for="{{list2.project_teathers}}" wx:key="index">
       <view>
-        <view class="row" bindtap="showApplicantInfo" data-index="{{list2.project_teathers[index][0]}}">{{list2.project_teathers[index][1]}}</view>
+        <view class="row" bindtap="showApplicantInfo" data-index="{{list2.project_teathers[index][0]}}" data-occupation="teacher">{{list2.project_teathers[index][1]}}</view>
       </view>
     </block>
   </view>

@@ -84,11 +84,13 @@ Page({
 
 
   showApplicantInfo: function(e){
+    //console.log(e)
     let openid = e.currentTarget.dataset['index'];
+    let occupation = e.currentTarget.dataset['occupation']
     console.log("点了")
     console.log(openid)
     wx.navigateTo({
-      url: '/pages/project_list_in/project_list_in?project_leader='+this.data.list2.project_leader+'&project_people='+openid+'&project_teather='+this.data.list2.project_teather
+      url: '/pages/project_list_in/project_list_in?project_leader='+this.data.list2.project_leader+'&project_people='+openid+'&project_teather='+this.data.list2.project_teather+'&occupation='+occupation
     });
 
   },

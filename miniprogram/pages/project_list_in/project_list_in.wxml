@@ -5,10 +5,16 @@
   <view class="top">
     <image src="{{picUrl}}"></image>
   </view>
-  <view class="texts">
+  <view wx:if="{{fule.occupation == 'student' || fule.project_leader == fule.project_people}}" class="texts">
     <view class="text">姓名：{{name}}{{ress.data[0].name}}</view>
     <view class="text">性别：{{ress.data[0].gender}}</view>
     <view class="text">年级：{{ress.data[0].grade}}</view>
+    <view class="text">学院：{{ress.data[0].college}}</view>
+  </view>
+  <view wx:if="{{fule.occupation == 'teacher' || fule.project_teather == fule.project_people}}" class="texts">
+    <view class="text">姓名：{{name}}{{ress.data[0].name}}</view>
+    <view class="text">性别：{{ress.data[0].gender}}</view>
+    <view class="text">专业：{{ress.data[0].grade}}</view>
     <view class="text">学院：{{ress.data[0].college}}</view>
   </view>
 </view>
