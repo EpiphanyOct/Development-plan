@@ -29,36 +29,30 @@ Page({
 
 
   btnsub(res){
-    console.log(this.data.apple)
-    console.log(res)
-    console.log(res.detail.value.name)
+    console.log(app)
     wx.cloud.database().collection("login_users").where({
-      account:res.detail.value.name
+      account:Number(res.detail.value.name)
     }).get().then(ress=>{
-      console.log(ress)
-    })
-    if(this.data.apple=="0"){
-    console.log("baocun")
-    wx.cloud.database().collection("login_users").add({
-      data:{
-        occupation:event.currentTarget.dataset.index,
-        _openid:app.globalData.openid
-      },
-      //success(res){
-        //app.globalData.occupation=event.currentTarget.dataset.index
-        //x.showToast({
-          //title: '登录成功',
-        //})
-        //wx.reLaunch({
-          //url: ''
-      //})
-      //}
-    })
-    }else{
-    console.log("bubaocun")
-    }
-    this.setData({
-      items: event.detail
+      console.log(ress.data.length)
+        if(ress.data.length != "0"){
+          if (this.data.apple=="0"){
+            console.log("baocun")
+            console.log(res.detail.value.name)
+            wx.cloud.database().collection("login_users").where({
+              account:Number(res.detail.value.name)
+            }).update({
+              data:{
+                joinid:app.globalData.name
+              }
+            })
+          }
+        }else{ress == null
+          wx.showToast({
+            title: '请输入正确的账号',
+            icon: 'none',
+            duration:2000
+          })
+        }
     })
   },
   /**

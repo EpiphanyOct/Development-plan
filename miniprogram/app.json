@@ -1,8 +1,8 @@
 {
   "pages":[
- 
-    "pages/londing/londing",
     "pages/log_in/log_in",
+    "pages/londing/londing",
+
     "pages/occupation/occupation",
     "pages/home/home",
     "pages/add/add",
