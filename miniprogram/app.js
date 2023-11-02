@@ -7,7 +7,8 @@ App({
     userInfo: null,
     openid:null,
     head:null,
-    name:null
+    name:null,
+    account:null
   },
 
 

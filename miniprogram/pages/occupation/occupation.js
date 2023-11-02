@@ -33,8 +33,9 @@ Page({
     wx.cloud.database().collection("login_users").where({
       account:Number(res.detail.value.name)
     }).get().then(ress=>{
-      console.log(ress.data.length)
-        if(ress.data.length != "0"){
+      console.log(ress.data)
+      console.log(res.detail.value)
+        if(ress.data.length != "0" && ress.data[0].password == res.detail.value.password){
           if (this.data.apple=="0"){
             console.log("baocun")
             console.log(res.detail.value.name)
@@ -42,13 +43,19 @@ Page({
               account:Number(res.detail.value.name)
             }).update({
               data:{
-                joinid:app.globalData.name
+                joinid:app.globalData.openid
               }
             })
           }
+          console.log(res.detail.value.occupation)
+          app.globalData.occupation = ress.data[0].occupation
+          app.globalData.account = ress.data[0].account
+          wx.reLaunch({
+            url: '/pages/user/user'
+        })
         }else{ress == null
           wx.showToast({
-            title: '请输入正确的账号',
+            title: '请输入正确的账号或密码',
             icon: 'none',
             duration:2000
           })

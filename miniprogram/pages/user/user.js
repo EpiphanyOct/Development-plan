@@ -29,7 +29,7 @@ Page({
     })
     console.log(path)
     wx.cloud.uploadFile({
-      cloudPath:'users/'+app.globalData.openid+'.jpg',
+      cloudPath:'users/'+app.globalData.account+'.jpg',
       filePath:path
     }).then(res=>{
       console.log(res.fileID)
@@ -41,9 +41,8 @@ Page({
   },
 
   head(){
-    console.log(app.globalData.head)
     wx.cloud.downloadFile({
-      fileID: 'cloud://shool-1gus62rlb2e36ed3.7368-shool-1gus62rlb2e36ed3-1319592195/users/'+app.globalData.openid+'.jpg', // 云存储中图片的文件 ID
+      fileID: 'cloud://shool-1gus62rlb2e36ed3.7368-shool-1gus62rlb2e36ed3-1319592195/users/'+app.globalData.account+'.jpg', // 云存储中图片的文件 ID
       success: res => {
       //用户已经保存过的头像
       console.log(res)
@@ -63,15 +62,16 @@ Page({
 
   information(){
     console.log(app.globalData.occupation)
-    console.log(app.globalData.openid)
+    console.log(app.globalData.account)
     var lits;
     wx.cloud.database().collection("people").where({
-      _openid:app.globalData.openid
+      account:app.globalData.account
     }).get().then(ress=>{
       if(ress.data.length==0){
         wx.cloud.database().collection("people").add({
           data:{
-            name:app.globalData.name,
+            account:app.globalData.account,
+            name:"",
             gender:"",
             grade:"",
             college:"",
@@ -105,7 +105,7 @@ Page({
 
   getDate(){
     wx.cloud.database().collection("domelist").where({
-      project_leader:app.globalData.openid
+      project_leader:app.globalData.account
     }).get().then(res=>{
     console.log(res)
     this.data.occupation=app.globalData.occupation

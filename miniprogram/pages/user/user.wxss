@@ -33,6 +33,7 @@
 /*右侧按钮样式*/
 .button2{
   margin: 0rpx 8rpx auto 100rpx;
+  margin-top: 10rpx;
 }
 
 /*分割线1样式*/

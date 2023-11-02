@@ -12,7 +12,7 @@ Page({
   login(){
     console.log(app.globalData)
     wx.cloud.database().collection("login_users").where({
-      _openid:app.globalData.openid
+      joinid:app.globalData.openid
     }).get().then(res=>{
       console.log(res.data[0])
       if(res.data[0]==undefined){
@@ -23,9 +23,13 @@ Page({
       }else{
         app.globalData.occupation=res.data[0].occupation
         console.log("找到了")
+        wx.showToast({
+          title: '登录成功',
+          duration:1000
+        })
         wx.reLaunch({
           url: '/pages/home/home'
-      })
+       })
     }
   })
   },
