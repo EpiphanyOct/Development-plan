@@ -33,7 +33,7 @@ Page({
   information(){
     var lits;
     wx.cloud.database().collection("people").where({
-      _openid:this.data.list.project_people
+      account:this.data.list.project_people
     }).get().then(ress=>{
         console.log("查到了")
         //console.log(ress)
@@ -47,7 +47,7 @@ Page({
 
   getDate(){
     wx.cloud.database().collection("domelist").where({
-      project_leader:this.data.list.project_people
+      project_leader:Number(this.data.list.project_people)
     }).get().then(res=>{
     console.log(res)
     this.setData({
@@ -62,7 +62,7 @@ Page({
    */
   onLoad(options) {
   this.setData({
-    openid:app.globalData.openid,
+    account:app.globalData.account,
     fule:options
   })
     this.data.list=options

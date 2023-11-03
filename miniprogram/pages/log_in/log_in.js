@@ -21,6 +21,7 @@ Page({
           url: '/pages/occupation/occupation'
         })
       }else{
+        app.globalData.account = res.data[0].account
         app.globalData.occupation=res.data[0].occupation
         console.log("找到了")
         wx.showToast({

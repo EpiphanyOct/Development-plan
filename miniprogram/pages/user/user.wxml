@@ -39,3 +39,4 @@ class="row" wx:for="{{datalist}}" wx:key="index">
 
 
 
+<button style="width: 40vw" type="primary" bindtap="out">登出账号</button>

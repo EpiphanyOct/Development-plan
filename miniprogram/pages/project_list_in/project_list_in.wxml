@@ -19,7 +19,7 @@
   </view>
 </view>
 
-<view wx:if="{{fule.project_leader == openid || fule.project_teather == openid}}" class="reason0">
+<view wx:if="{{fule.project_leader == account || fule.project_teather == account}}" class="reason0">
   <view>QQ: {{ress.data[0].QQ}}</view>
   <view>微信：{{ress.data[0].wechat}}</view>
   <view>电话： {{ress.data[0].phone}}</view>

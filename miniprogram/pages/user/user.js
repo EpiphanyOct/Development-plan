@@ -115,6 +115,34 @@ Page({
     })
   })
   },
+
+  out(){
+    wx.showModal({
+      title: '提示',
+      content: '确定要登出吗？',
+      success: function (res) {
+        if (res.confirm) {//这里是点击了确定以后
+          console.log('用户点击确定')
+          console.log(app.globalData)
+          wx.cloud.database().collection("login_users").where({
+            account:Number(app.globalData.account)
+          }).update({
+            data:{
+              joinid: null
+            },
+            success: function(res) {
+              console.log(res.data)
+            }
+          })
+          wx.reLaunch({
+            url: '/pages/occupation/occupation'
+        })
+        } else {//这里是点击了取消以后
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

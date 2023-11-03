@@ -42,7 +42,6 @@ Page({
 
 
 
-
   show(){
     this.setData({
       openid:app.globalData.openid,
@@ -59,9 +58,9 @@ Page({
         list2:res.data[0],
         query:res.data[0].project_neme
       })
-      if(app.globalData.openid==this.data.list2.project_leader[0]||app.globalData.openid==this.data.list2.project_teather[0]||  this.data.list2.project_teathers.some(item => item.find(id => id === app.globalData.openid)) ||
-      this.data.list2.project_member.some(item => item.find(id => id === app.globalData.openid)) ||
-      this.data.list2.project_want.some(item => item.find(id => id === app.globalData.openid))
+      if(app.globalData.account==this.data.list2.project_leader[0]||app.globalData.account==this.data.list2.project_teather[0]||  this.data.list2.project_teathers.some(item => item.find(id => id === app.globalData.account)) ||
+      this.data.list2.project_member.some(item => item.find(id => id === app.globalData.account)) ||
+      this.data.list2.project_want.some(item => item.find(id => id === app.globalData.account))
       ){
         console.log("yes")
       }else{
@@ -70,7 +69,7 @@ Page({
           none_btn:this.data.none_btn
         })
       }
-      if(app.globalData.openid==this.data.list2.project_leader[0]||app.globalData.openid==this.data.list2.project_teather[0]){const teathers = this.data.list2.project_want.filter(sublist => sublist.includes('teather'))
+      if(app.globalData.account==this.data.list2.project_leader[0]||app.globalData.account==this.data.list2.project_teather[0]){const teathers = this.data.list2.project_want.filter(sublist => sublist.includes('teather'))
       const students = this.data.list2.project_want.filter(sublist => sublist.includes('student'))
       this.setData({
         none_leader:'show',
@@ -90,7 +89,7 @@ Page({
     console.log("点了")
     console.log(openid)
     wx.navigateTo({
-      url: '/pages/project_list_in/project_list_in?project_leader='+this.data.list2.project_leader+'&project_people='+openid+'&project_teather='+this.data.list2.project_teather+'&occupation='+occupation
+      url: '/pages/project_list_in/project_list_in?project_leader='+this.data.list2.project_leader+'&project_people='+account+'&project_teather='+this.data.list2.project_teather+'&occupation='+occupation
     });
 
   },
@@ -148,7 +147,7 @@ Page({
 
   join(){
     wx.cloud.database().collection("people").where({
-      _openid:app.globalData.openid
+      account:app.globalData.account
     }).get().then(ress=>{
       console.log(ress)
       app.globalData.name=ress.data[0].name
@@ -156,7 +155,7 @@ Page({
       console.log(this.data.list2)
       //db=wx.cloud.database();
       //_ =db.command;
-      this.data.list2.project_want.push([app.globalData.openid,app.globalData.name,app.globalData.occupation])
+      this.data.list2.project_want.push([app.globalData.account,app.globalData.name,app.globalData.occupation])
       console.log(this.data.list2.project_want)
       wx.cloud.database().collection("domelist").doc(this.data.list2._id).update({
         data:{

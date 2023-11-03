@@ -32,7 +32,7 @@ Page({
     var name;
     console.log(res.detail)
     wx.cloud.database().collection("people").where({
-      _openid:app.globalData.openid
+      account:app.globalData.account
     }).get().then(ress=>{
       if(ress.data.length==0){
         name=app.globalData.name
@@ -48,7 +48,7 @@ Page({
           data:{
             project_neme:project_neme,
             project_leader:[
-              app.globalData.openid,name
+              app.globalData.account,name
             ],
             project_teather:[],
             project_teathers:[],
@@ -67,7 +67,7 @@ Page({
               project_neme:project_neme,
               project_leader:[
               ],
-              project_teather:[app.globalData.openid,name],
+              project_teather:[app.globalData.account,name],
               project_teathers:[],
               project_college:this.data.college[this.data.index3],
               project_introduction:project_introduction,
