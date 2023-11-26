@@ -1,10 +1,11 @@
 {
   "pages":[
- 
     "pages/londing/londing",
+    "pages/project/project",
     "pages/log_in/log_in",
     "pages/occupation/occupation",
-    "pages/home/home",
+    "pages/HOME/HOME",
+    "pages/home_CXCY/home_CXCY",
     "pages/add/add",
     "pages/user/user",
     "pages/user_in/user_in",
@@ -18,15 +19,20 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#7fb80e",
-    "navigationBarTitleText": "广西科技大学创业创新平台",
+    "navigationBarTitleText": "创业创新平台",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
     "list": [{
-      "pagePath": "pages/home/home",
-      "text":"首页",
-      "iconPath": "pages/images/tabs/homeblue.png",
-      "selectedIconPath": "pages/images/tabs/homegreen.png"
+      "pagePath": "pages/home_CXCY/home_CXCY",
+      "text":"比赛",
+      "iconPath": "pages/images/tabs/gameblue.png",
+      "selectedIconPath": "pages/images/tabs/gamegreen.png"
+    },{
+      "pagePath": "pages/project/project",
+      "text":"项目组",
+      "iconPath": "pages/images/tabs/listblue.png",
+      "selectedIconPath": "pages/images/tabs/listgreen.png"
     },{
       "pagePath": "pages/add/add",
       "text":"发布消息",
@@ -37,7 +43,19 @@
       "text":"个人中心",
       "iconPath": "pages/images/tabs/userblue.png",
       "selectedIconPath": "pages/images/tabs/usergreen.png"
-    }]
+    }],
+    "list": [{
+      "pagePath": "pages/HOME/HOME",
+      "text":"比赛",
+      "iconPath": "pages/images/tabs/gameblue.png",
+      "selectedIconPath": "pages/images/tabs/gamegreen.png"
+    },{
+      "pagePath": "pages/user/user",
+      "text":"个人中心",
+      "iconPath": "pages/images/tabs/userblue.png",
+      "selectedIconPath": "pages/images/tabs/usergreen.png"
+    }
+]
   },
   "permission": {
     "scope.userProfile": {
