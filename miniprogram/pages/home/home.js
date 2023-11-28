@@ -1,33 +1,135 @@
-// pages/HOME/HOME.js
+
+// pages/home/home.js
+const db=wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    indicators: true, // 是否显示指示点
+    autoplay: true, // 是否自动播放
+    interval: 3000, // 图片切换的间隔时间
+    duration: 500, // 图片切换的动画时长
+    imageUrl: [],
+    projectlist: [],
+    dataList:[],
+    isloding:false,
+
+    gridlist:['体育场馆预约','创业创新平台','功能开发中','功能开发中','功能开发中','功能开发中']
+    //六宫格图片存贮列表
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
-    var today=new Date()
-    console.log(today)
-    var currentDate=today.getTime()
-    console.log(currentDate)
-    var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"]
-    console.log("今天是：" + weekday[currentDate])
+    this.picture();
+    this.item();
   },
-
+  
+  picture() {
+    wx.stopPullDownRefresh();
+    var that = this;
+    db.collection("picture").where({
+      picture:"2"
+    }).get({
+      success: function(res) {
+        console.log(res)
+        var fileIDs = res.data.map(function(item) {
+          return item.fileID;
+        });
+        
+        var imagePaths = [];
+        var count = 0;
+        for (var i = 0; i < fileIDs.length; i++) {
+          wx.cloud.downloadFile({
+            fileID: fileIDs[i],
+            success: function(res) {
+              imagePaths.push(res.tempFilePath);
+              count++;
+              if (count === fileIDs.length) {
+                that.setData({
+                  imageUrl: imagePaths
+                });
+              }
+            },
+            fail: function(err) {
+              console.log(err);
+            }
+          });
+        }
+      },
+      fail: function(err) {
+        console.log(err);
+      }
+    });
+  },
+  
+  item(){
+    wx.stopPullDownRefresh();
+    var that = this;
+  
+    db.collection("picture").where({
+      picture:"1"
+    }).get({
+      success: function(res) {
+        console.log(res);
+        var fileIDs = res.data.map(function(item) {
+          return item.fileID;
+        });
+  
+        var imagePaths = [];
+        var count = 0;
+        for (var i = 0; i < fileIDs.length; i++) {
+          wx.cloud.downloadFile({
+            fileID: fileIDs[i],
+            success: function(res) {
+              imagePaths.push(res.tempFilePath); 
+              count++;
+              if (count === fileIDs.length) {
+                that.setData({
+                  gridlist_pr: imagePaths,
+                  gridlist: that.data.gridlist
+                });
+              }
+            },
+            fail: function(err) {
+              console.log(err);
+            }
+          });
+        }
+      },
+      fail: function(err) {
+        console.log(err);
+      }
+    });
+  },
+  
+  ii:function(event){
+    console.log(event.currentTarget.dataset.hi);
+    if(event.currentTarget.dataset.hi==0){
+      console.log("yes")
+      wx.navigateTo({
+        url: '../../PC/pages/home_PC/home_PC'
+      });
+    }else if(event.currentTarget.dataset.hi==1){
+      console.log("yes")
+      wx.navigateTo({
+        //url: '../../CXCY/pages/home_CXCY/home_CXCY'
+        url: '/pages/try/try'
+      })
+    }else(event.currentTarget.dataset.hi!=1 || event.currentTarget.dataset.hi!=1)
+    wx.navigateTo({
+      url: '/pages/try/try'
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    wx.reLaunch({
-      url: '/pages/home_CXCY/home_CXCY'
-   })
+    //-------------------------------显示登录成功
   },
 
   /**
@@ -57,7 +159,7 @@ Page({
   onPullDownRefresh() {
 
   },
-
+  
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -69,6 +171,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
-
+    
   }
-})
+});

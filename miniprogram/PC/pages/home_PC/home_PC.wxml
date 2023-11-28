@@ -1,0 +1,36 @@
+<!--PC/pages/home_PC/home_PC.wxml-->
+<view class="section">
+  <picker bindchange="weekChange" value="{{index1}}" range="{{week}}">
+    <view class="picker">
+    <view class="reason1">请选择星期</view>
+      当前选择：{{week[index1]}}
+    </view>
+  </picker>
+  <view wx:if="{{index1 <= 7 }}">
+    <picker bindchange="sportChange" value="{{index2}}" range="{{sport}}">
+      <view class="picker">
+      <view class="reason1">请选择体育项目</view>
+        当前选择：{{sport[index2]}}
+      </view>
+    </picker>
+  </view>
+  <view wx:if="{{index2 <= 7 }}">
+    <picker bindchange="whereChange" value="{{index3}}" range="{{where}}">
+      <view class="picker">
+      <view class="reason1">请选择场地</view>
+        当前选择：{{where[index3]}}
+      </view>
+    </picker>
+  </view>
+  <view wx:if="{{index3 <= 7 }}">
+    <picker bindchange="timeChange" value="{{index4}}" range="{{time}}">
+      <view class="picker">
+      <view class="reason1">请选择时间</view>
+        当前选择：{{time[index4]}}
+      </view>
+    </picker>
+  </view>
+  <view wx:if="{{index4 <= 7 }}">
+    <button>确定</button>
+  </view>
+</view>

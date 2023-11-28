@@ -1,52 +1,49 @@
 {
   "pages":[
+
     "pages/londing/londing",
-    "pages/project/project",
     "pages/log_in/log_in",
     "pages/occupation/occupation",
     "pages/HOME/HOME",
-    "pages/home_CXCY/home_CXCY",
-    "pages/add/add",
-    "pages/user/user",
-    "pages/user_in/user_in",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/project_list/project_list",
-    "pages/project_modification/project_modification",
-    "pages/project_list_in/project_list_in",
-    "pages/try/try"
+    "pages/try/try",
+    "pages/user/user"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#7fb80e",
-    "navigationBarTitleText": "创业创新平台",
+    "navigationBarTitleText": "校园服务平台",
     "navigationBarTextStyle":"black"
   },
+  "subPackages": [
+    {
+      "root": "PC",
+      "name": "PC",
+      "pages": [
+        "pages/index/index",
+        "pages/home_PC/home_PC"
+      ]
+    },{
+      "root": "CXCY",
+      "name": "CXCY",
+      "pages": [
+        "pages/index/index",
+        "pages/project/project",
+        "pages/home_CXCY/home_CXCY",
+        "pages/add/add",
+        "pages/user/user",
+        "pages/user_in/user_in",
+        "pages/project_list/project_list",
+        "pages/project_modification/project_modification",
+        "pages/project_list_in/project_list_in"
+      ]
+    }
+  ],
   "tabBar": {
     "list": [{
-      "pagePath": "pages/home_CXCY/home_CXCY",
-      "text":"比赛",
-      "iconPath": "pages/images/tabs/gameblue.png",
-      "selectedIconPath": "pages/images/tabs/gamegreen.png"
-    },{
-      "pagePath": "pages/project/project",
-      "text":"项目组",
-      "iconPath": "pages/images/tabs/listblue.png",
-      "selectedIconPath": "pages/images/tabs/listgreen.png"
-    },{
-      "pagePath": "pages/add/add",
-      "text":"发布消息",
-      "iconPath": "pages/images/tabs/addblue.png",
-      "selectedIconPath": "pages/images/tabs/addgreen.png"
-    },{
-      "pagePath": "pages/user/user",
-      "text":"个人中心",
-      "iconPath": "pages/images/tabs/userblue.png",
-      "selectedIconPath": "pages/images/tabs/usergreen.png"
-    }],
-    "list": [{
       "pagePath": "pages/HOME/HOME",
-      "text":"比赛",
+      "text":"首页",
       "iconPath": "pages/images/tabs/gameblue.png",
       "selectedIconPath": "pages/images/tabs/gamegreen.png"
     },{
@@ -54,8 +51,7 @@
       "text":"个人中心",
       "iconPath": "pages/images/tabs/userblue.png",
       "selectedIconPath": "pages/images/tabs/usergreen.png"
-    }
-]
+    }]
   },
   "permission": {
     "scope.userProfile": {

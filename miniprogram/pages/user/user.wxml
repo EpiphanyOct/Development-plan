@@ -23,20 +23,17 @@
 <view class="reason">个人简介：</view>
 <view class="intro">{{ress.data[0].intro}}</view>
 <!--负责项目分割线-->
-<text class="reason1">负责的项目</text>
-<navigator open-type="navigateTo" url="/pages/project_list/project_list?project_neme={{item.project_neme}}&project_id={{item._id}}"
-class="row" wx:for="{{datalist}}" wx:key="index">
-  <view class="title">项目名称：{{item.project_neme}}</view>
-</navigator>
+
 
 
 
 
 
 <!--参与项目分割线-->
-<text class="reason2">参与的项目</text>
+
 
 
 
 
 <button style="width: 40vw" type="primary" bindtap="out">登出账号</button>
+<fBar id="f-bar" idx="0"></fBar>

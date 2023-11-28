@@ -1,0 +1,8 @@
+{
+  "onReachBottomDistance": 330,
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "fBar": "../CXCY/components/CYCX_TABBER/CYCX_TABBER"
+  }
+}

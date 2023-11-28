@@ -104,16 +104,10 @@ Page({
     },
 
   getDate(){
-    wx.cloud.database().collection("domelist").where({
-      project_leader:app.globalData.account
-    }).get().then(res=>{
-    console.log(res)
     this.data.occupation=app.globalData.occupation
     this.setData({
       occupation:this.data.occupation,
-      datalist:res.data
     })
-  })
   },
 
   out(){

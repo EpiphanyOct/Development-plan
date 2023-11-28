@@ -1,0 +1,9 @@
+{
+  "backgroundColor": "#efefef",
+  "backgroundTextStyle": "dark",
+  "onReachBottomDistance": 330,
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "fBar": "../../components/CYCX_TABBER/CYCX_TABBER"
+  }
+}
