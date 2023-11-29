@@ -1,4 +1,6 @@
 // PC/pages/home_PC/home_PC.js
+const db = wx.cloud.database()
+const _ = db.command
 Page({
 
   /**
@@ -97,21 +99,40 @@ Page({
 
   },
   weekChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index1: e.detail.value
+      index1: e.detail.value,
+      index2: 10,
+      index3: 10,
+      index4: 10
     })
   },
   sportChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index2: e.detail.value
+      index2: e.detail.value,
+      index3: 10,
+      index4: 10
+    })
+    console.log(this.data.week[this.data.index1])
+    console.log(this.data.sport[this.data.index2])
+    db.collection('PC').where({
+      short_time:true,
+      week_sport_where_time: {
+        0: this.data.week[this.data.index1],
+        1: this.data.sport[this.data.index2]
+      }
+    }).get({
+      success: function(res) {
+        // res.data 包含该记录的数据
+        console.log(res.data.week_sport_where_time)
+      }
     })
   },
+
   whereChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index3: e.detail.value
+      index3: e.detail.value,
+      index4: 10
     })
   },
   timeChange: function(e) {
