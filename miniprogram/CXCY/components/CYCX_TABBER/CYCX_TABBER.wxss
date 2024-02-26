@@ -1,6 +1,10 @@
 
 
 .iconf {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 40px;
+    height: 40px;
     font-family: "iconfont" !important;
     font-size: inherit;
     font-style: normal;

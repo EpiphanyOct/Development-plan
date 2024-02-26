@@ -28,3 +28,28 @@
   background:linear-gradient(#ccc,#ccc) repeat-x center;
   background-size: 0.1rem 0.1rem;
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cell {
+  width: 90rpx;
+  height: 60rpx;
+  border: 2rpx solid #000;
+  text-align: center;
+  line-height: 40px;
+  font-size: 30rpx; 
+}
+
+.header {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}

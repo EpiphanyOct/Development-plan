@@ -11,37 +11,34 @@ Component({
         "current": 0,
         "pagePath": "../../pages/home_CXCY/home_CXCY",
         "text": "首页",
-        "iconClass":"icon-homefill",
+        "iconClass":"../../../pages/images/tabs/home0.png",
         "iconTopClass":""
       },{
         "current": 0,
         "pagePath": "../../pages/project/project",
         "text": "项目列表",
-        "iconClass":"list-project",
+        "iconClass":"../../../pages/images/tabs/list0.png",
         "iconTopClass":""
       },
       {
         "current": 0,
         "pagePath": "../../pages/add/add",
         "text": "发布",
-        "iconClass":"cu-btn icon-add bg-green shadow",
-        "iconTopClass":"add-action"
+        "iconClass":"../../../pages/images/tabs/add0.png",
+        "iconTopClass":""
 
       },
       {
         "current": 0,
         "pagePath": "../../pages/user/user",
         "text": "我的",
-        "iconClass":"icon-my",
+        "iconClass":"../../../pages/images/tabs/me0.png",
         "iconTopClass":""
       },
     ]
   },
   observers: {
     "idx": function (id) {
-      console.log("hello")
-      console.log(id)
-      console.log("hello2")
       var otabbar = this.data.tabBar;
       otabbar[id]['iconPath'] = otabbar[id]['selectedIconPath']//换当前的icon
       otabbar[id]['current'] = 1;

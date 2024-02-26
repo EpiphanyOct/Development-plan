@@ -116,10 +116,9 @@ Page({
     }else if(event.currentTarget.dataset.hi==1){
       console.log("yes")
       wx.navigateTo({
-        //url: '../../CXCY/pages/home_CXCY/home_CXCY'
-        url: '/pages/try/try'
+        url: '../../CXCY/pages/home_CXCY/home_CXCY'
       })
-    }else(event.currentTarget.dataset.hi!=1 || event.currentTarget.dataset.hi!=1)
+    }else(event.currentTarget.dataset.hi!=1 || event.currentTarget.dataset.hi!=0)
     wx.navigateTo({
       url: '/pages/try/try'
     })

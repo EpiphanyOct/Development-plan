@@ -54,7 +54,7 @@ Page({
       fail: err => {
         // 用户未保存头像
         this.setData({
-          picUrl:'/pages/images/tabs/head.png'
+          picUrl:'../../CXCY/pages/images/tabs/head.png'
         })
       }
     })
@@ -86,7 +86,8 @@ Page({
       })
       }else{
         console.log("查到了")
-        //console.log(ress)
+        console.log("hello")
+        console.log(ress)
         this.data.lits=ress
         //console.log(this.data.lits)
         this.setData({
@@ -99,7 +100,7 @@ Page({
   message(){
     console.log(this.data.lits)
     wx.navigateTo({
-      url: '/pages/user_in/user_in?college='+this.data.lits.data[0].college+'&QQ='+this.data.lits.data[0].QQ+'&gender='+this.data.lits.data[0].gender+'&grade='+this.data.lits.data[0].grade+'&intro='+this.data.lits.data[0].intro+'&name='+this.data.lits.data[0].name+'&phone='+this.data.lits.data[0].phone+'&wechat='+this.data.lits.data[0].wechat+'&_id='+this.data.lits.data[0]._id
+      url: '../../CXCY/pages/user_in/user_in?college='+this.data.lits.data[0].college+'&QQ='+this.data.lits.data[0].QQ+'&gender='+this.data.lits.data[0].gender+'&grade='+this.data.lits.data[0].grade+'&intro='+this.data.lits.data[0].intro+'&name='+this.data.lits.data[0].name+'&phone='+this.data.lits.data[0].phone+'&wechat='+this.data.lits.data[0].wechat+'&_id='+this.data.lits.data[0]._id
     })
     },
 

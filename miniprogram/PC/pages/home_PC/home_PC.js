@@ -7,10 +7,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    chose_where:0,
+    chose_week:0,
+    chose_time:0,
+    list1:[],
+    list2:[],
+    color:"",
     week: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
     sport:['羽毛球','排球'],
     where:['一号场','二号场','三号场','四号场','五号场','六号场','七号场','八号场'],
-    time:['18:30~20:00','20:00~22:00'],
+    time:[],
     objectWeek: [
       {
         id: 0,
@@ -96,50 +102,124 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+ 
   },
   weekChange: function(e) {
+    this.data.chose_where = e.detail.value
     this.setData({
       index1: e.detail.value,
-      index2: 10,
-      index3: 10,
-      index4: 10
     })
+
   },
+
   sportChange: function(e) {
+    var newlist = []
+    var that = this
+    console.log("hello")
     this.setData({
       index2: e.detail.value,
-      index3: 10,
-      index4: 10
     })
-    console.log(this.data.week[this.data.index1])
-    console.log(this.data.sport[this.data.index2])
     db.collection('PC').where({
-      short_time:true,
-      week_sport_where_time: {
-        0: this.data.week[this.data.index1],
-        1: this.data.sport[this.data.index2]
-      }
+      sport:that.data.sport[that.data.index2]
     }).get({
       success: function(res) {
-        // res.data 包含该记录的数据
-        console.log(res.data.week_sport_where_time)
+        for(var i = 0;i < res.data.length;i++){
+          if (i == 0) {
+            that.data.list1 = res.data[i].short_time
+          }else{
+            that.data.list2 = res.data[i].short_time
+            var result = []; // 结果列表
+           newlist = []
+            for (var j = 0; j < that.data.list1.length; j++) {
+              var result= []
+              for (var q = 0; q < 7;q++){
+                var sum = []
+                sum = that.data.list1[j][q] + that.data.list2[j][q]; // 对应位置元素相加
+                result.push(sum) // 将结果添加到结果列表
+              }
+              newlist.push(result)
+            }
+          }
+        }
+        that.setData({
+          newlist: newlist
+        })
       }
     })
   },
 
+
+
+
   whereChange: function(e) {
+    this.data.chose_week = e.detail.value
+    console.log(this.data.chose_where)
+    console.log(this.data.chose_week)
+    console.log(this.data.list1)
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index3: e.detail.value,
-      index4: 10
     })
+    if (this.data.list1[this.data.chose_week][this.data.chose_where]== 1 && this.data.list2[this.data.chose_week][this.data.chose_where] == 1){
+      this.setData({
+        time:['18:30~20:00','20:00~22:00']
+      })
+    }else if(this.data.list1[this.data.chose_week][this.data.chose_where] == 1 && this.data.list2[this.data.chose_week][this.data.chose_where] == 0){
+      this.setData({
+        time:['18:30~20:00']
+      })
+    }else if(this.data.list1[this.data.chose_week][this.data.chose_where] == 0 && this.data.list2[this.data.chose_week][this.data.chose_where] == 1){
+      this.setData({
+        time:['20:00~22:00']
+      })
+    }else{
+      this.setData({
+        time:[]
+      })
+    }
   },
+
+
+
+
   timeChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index4: e.detail.value
     })
+    this.data.color=this.data.time[e.detail.value]
+  },
+
+  button(){
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定预定该时间吗？',
+      success: function (res) {
+        if (res.confirm) {//这里是点击了确定以后
+          db.collection("PC").where({
+            sport:that.data.sport[that.data.index2],
+            time:that.data.color
+          }).get().then(res=>{
+            db.collection("PC").doc(res.data[0]._id).update({
+            data:{
+              short_time:{
+                [that.data.chose_week]:{
+                  [that.data.chose_where]:0
+                  }
+                }
+              },
+            })
+          })
+          wx.reLaunch({
+            url: '../../../pages/HOME/HOME'
+          });
+        } else {//这里是点击了取消以后
+        }
+      }
+    })
+
+   
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
