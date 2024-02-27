@@ -16,7 +16,7 @@ Page({
     dataList:[],
     isloding:false,
 
-    gridlist:['体育场馆预约','创业创新平台','功能开发中','功能开发中','功能开发中','功能开发中']
+    gridlist:['体育场馆预约','创业创新平台','入校签到','功能开发中','功能开发中','功能开发中']
     //六宫格图片存贮列表
   },
 
@@ -118,7 +118,12 @@ Page({
       wx.navigateTo({
         url: '../../CXCY/pages/home_CXCY/home_CXCY'
       })
-    }else(event.currentTarget.dataset.hi!=1 || event.currentTarget.dataset.hi!=0)
+    }else if (event.currentTarget.dataset.hi==2){
+      console.log("yes")
+      wx.navigateTo({
+        url: '../../sign_in/pages/home/home'
+      })
+    }else(event.currentTarget.dataset.hi!=1 || event.currentTarget.dataset.hi!=0 || event.currentTarget.dataset.hi!=2)
     wx.navigateTo({
       url: '/pages/try/try'
     })

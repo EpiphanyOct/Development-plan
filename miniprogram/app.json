@@ -38,6 +38,12 @@
         "pages/project_modification/project_modification",
         "pages/project_list_in/project_list_in"
       ]
+    },{
+      "root": "sign_in",
+      "name": "sign_in",
+      "pages": [
+        "pages/home/home"
+      ]
     }
   ],
   "tabBar": {
@@ -56,9 +62,12 @@
   "permission": {
     "scope.userProfile": {
       "desc": "你自定义的授权说明"
-    }
+    },
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于入校信息统计"
+  }
   },
-  
+
   "sitemapLocation": "sitemap.json",
   "style": "v2"
 
