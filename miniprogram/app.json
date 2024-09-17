@@ -3,7 +3,7 @@
     "pages/londing/londing",
     "pages/log_in/log_in",
     "pages/occupation/occupation",
-    "pages/HOME/HOME",
+    "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
     "pages/try/try",
@@ -59,7 +59,7 @@
   ],
   "tabBar": {
     "list": [{
-      "pagePath": "pages/HOME/HOME",
+      "pagePath": "pages/home/home",
       "text":"首页",
       "iconPath": "pages/images/tabs/gameblue.png",
       "selectedIconPath": "pages/images/tabs/gamegreen.png"

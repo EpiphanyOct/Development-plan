@@ -29,7 +29,7 @@ Page({
           duration:1000
         })
         wx.reLaunch({
-          url: '/pages/HOME/HOME'
+          url: '/pages/home/home'
        })
     }
   })
