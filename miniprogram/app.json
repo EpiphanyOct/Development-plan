@@ -1,6 +1,5 @@
 {
   "pages":[
-
     "pages/londing/londing",
     "pages/log_in/log_in",
     "pages/occupation/occupation",
@@ -12,7 +11,7 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#7fb80e",
+    "navigationBarBackgroundColor": "#1890ff",
     "navigationBarTitleText": "校园服务平台",
     "navigationBarTextStyle":"black"
   },
@@ -42,6 +41,18 @@
       "root": "sign_in",
       "name": "sign_in",
       "pages": [
+        "pages/home/home"
+      ]
+    },{
+      "root":"leave",
+      "name":"leave",
+      "pages":[
+        "pages/home/home"
+      ]
+    },{
+      "root":"yx",
+      "name":"yx",
+      "pages":[
         "pages/home/home"
       ]
     }

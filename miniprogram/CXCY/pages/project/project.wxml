@@ -4,7 +4,7 @@
 
 
 <!--项目列表区-->
-<navigator open-type="navigateTo" url="/pages/project_list/project_list?project_neme={{item.project_neme}}&project_id={{item._id}}"
+<navigator open-type="navigateTo" url="/CXCY/pages/project_list/project_list?project_neme={{item.project_neme}}&project_id={{item._id}}"
 class="row" wx:for="{{dataList}}" wx:key="index"
 >
   <view class="title">项目名称：{{item.project_neme}}</view>

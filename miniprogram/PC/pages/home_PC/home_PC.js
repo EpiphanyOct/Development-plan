@@ -194,7 +194,7 @@ Page({
     var that = this
     wx.showModal({
       title: '提示',
-      content: '确定预定该时间吗？',
+      content: '预定'+that.data.week[that.data.index1]+that.data.sport[that.data.index2]+that.data.where[that.data.index3]+that.data.time[that.data.index4],
       success: function (res) {
         if (res.confirm) {//这里是点击了确定以后
           db.collection("PC").where({

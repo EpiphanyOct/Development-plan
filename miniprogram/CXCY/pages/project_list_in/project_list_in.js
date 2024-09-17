@@ -63,7 +63,7 @@ Page({
   onLoad(options) {
   this.setData({
     account:app.globalData.account,
-    fule:options
+    fule:options 
   })
     this.data.list=options
   },

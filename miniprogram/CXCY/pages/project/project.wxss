@@ -1,5 +1,5 @@
 /* pages/home/home.wxss */
-switch{
+.switch{
   height:350rpx
 }
 

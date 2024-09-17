@@ -10,7 +10,7 @@
     </block>
   </view>
 
-  <block wx:for="{{['场地一', '场地二', '场地三', '场地四', '场地五', '场地六', '场地七', '场地八']}}" wx:key="index" data-index="{{index}}">
+  <block wx:for="{{['一号场', '二号场', '三号场', '四号场', '五号场', '六号场', '七号场', '八号场']}}" wx:key="index" data-index="{{index}}">
     <view class="row">
       <text class="cell">{{item}}</text>
       <block wx:for="{{newlist[index]}}">
@@ -64,7 +64,7 @@
   </view>
 
   
-  <view wx:if="{{time != 0}}">
+  <view wx:if="{{time != 0 && index4 != 10}}">
     <button type="primary" bindtap="button">确定</button>
   </view>
 </view>

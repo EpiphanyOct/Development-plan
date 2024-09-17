@@ -20,13 +20,6 @@ Page({
 
   //提交表单添加进数据库
   btnsub(res){
-    //console.log(res)
-    // var project_leader=res.detail.value.project_leader;
-    // var project_teather=res.detail.value.project_teather;
-    // var project_college=detail.value.project_college;
-    // var project_introduction=detail.value.project_introduction;
-    // var project_need=detail.value.project_need;
-
     var {project_neme,project_introduction, project_need}=res.detail.value;
     //console.log(project_leader, project_teather, project_college, project_introduction, project_need)
     var name;
@@ -94,6 +87,8 @@ Page({
   onLoad(options) {
 
   },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

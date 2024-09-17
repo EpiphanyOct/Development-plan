@@ -20,8 +20,13 @@
     <button class="button2" size="mini" style="width:25vw" type="primary" bindtap="message">修改信息</button>
   </view>
 </view>
+
+
+<view>信息</view>
+<!--
 <view class="reason">个人简介：</view>
 <view class="intro">{{ress.data[0].intro}}</view>
+-->
 <!--负责项目分割线-->
 
 

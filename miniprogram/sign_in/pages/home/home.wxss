@@ -20,3 +20,9 @@
   background:linear-gradient(#ccc,#ccc) repeat-x center;
   background-size: 0.1rem 0.1rem;
 }
+
+.right-align-text {
+  display: inline;
+  text-align: right;
+  margin-right: 20rpx;
+}
