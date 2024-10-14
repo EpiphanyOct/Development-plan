@@ -1,5 +1,5 @@
 {
-  "miniprogramRoot": "miniprogram/",
+  "miniprogramRoot": "miniprogram/",  
   "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
     "urlCheck": true,
@@ -66,14 +66,14 @@
   },
   "srcMiniprogramRoot": "miniprogram/",
   "compileType": "miniprogram",
-  "editorSetting": {
-    "tabIndent": "insertSpaces",
+  "editorSetting": {  
+    "tabIndent": "insertSpaces",  
     "tabSize": 2
   },
-  "appid": "wx7c2704109b784bb2",
+  "appid": "wx7c2704109b784bb2",  
   "libVersion": "2.14.1",
   "packOptions": {
     "ignore": [],
-    "include": []
+    "include": []  
   }
 }
